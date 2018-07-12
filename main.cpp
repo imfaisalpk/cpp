@@ -10,8 +10,19 @@ using namespace std;
 
 int main(int argc, char const *argv[])
 {
+    vector <int> my_first_vector(10);
+    int integer_array[5] = {1,2,3,4,5};
 
-    
+    cout<< integer_array << endl;
+    cout << integer_array+3 << endl;
+
+
+    my_first_vector.insert(my_first_vector.begin(),integer_array,integer_array+3);
+
+    // cout << my_first_vector << endl;
+
+
+
     // string str_1 = "cat";
     // string str_2 = "dog";
 
