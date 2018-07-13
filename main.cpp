@@ -8,16 +8,254 @@ using namespace std;
 #define AUTHOR "MFAISAL"
 
 
+// int add_numbers(int left_num, int right_num);
+
+// void make_me_young(int* age){
+//     cout << "I used to be " << *age << endl;
+//     *age-=2;
+// }
+
+// void act_age(int& age){
+//     age = 35;
+// }
+
+class Animal
+{
+    private:
+        int height;
+        int weight;
+        string name;
+    
+    public:
+        void set_height(int cm){height=cm;}
+        void set_weight(int kg){weight=kg;}
+        void set_name(string aka){name=aka;}
+        int get_height(){return height;}
+        int get_weight(){return weight;}
+        string get_name(){return name;}
+    
+    static int animal_count;
+
+    
+    Animal();
+     
+    Animal(int,int,string);
+
+    ~Animal();  
+
+    void setAll(int,int,string);
+
+    void to_string();
+
+    static int get_animal_count(){return animal_count;}
+
+};
+
+int Animal::animal_count =0;
+
+Animal::Animal(){
+    animal_count++;
+}
+Animal::Animal(int height,int weight,string name){
+    this -> height = height;
+    this -> weight = weight;
+    this -> name = name;
+}
+
+Animal::~Animal(){
+    cout << "Animal " << this -> name << " destroyed" << endl;
+}
+
+void Animal::setAll(int height,int weight,string name){
+    this -> height = height;
+    this -> weight = weight;
+    this -> name = name;
+}
+
+void Animal::to_string(){
+    cout << "Height: "<< this ->height << " Weight: "<<this->weight << " name: "<< this -> name << endl;
+}
+
+
+class Dog:public Animal
+{
+    private:
+        string sound="woof";
+    
+    public:
+        void set_sound(string snd){sound=snd;}
+        string get_sound(){return sound;}
+
+    Dog():Animal(){};
+
+    Dog(int,int,string,string);
+
+    void to_string();
+
+};
+
+
+Dog::Dog(int height, int weight,string name,string bark):
+        Animal(height, weight, name){
+            this -> sound = bark;
+        }
+
+void Dog::to_string(){
+    cout << "Height: "<< this ->get_height() << " Weight: "<<this->get_weight() 
+            << " name: "<< this -> get_name() << " sound: " << this ->sound <<  endl;
+
+}
+
+
 int main(int argc, char const *argv[])
 {
-    vector <int> my_first_vector(10);
-    int integer_array[5] = {1,2,3,4,5};
+    Dog spot(45,50,"billah","goofy");
+    spot.to_string();
 
-    cout<< integer_array << endl;
-    cout << integer_array+3 << endl;
+    spot.Animal::to_string();
 
 
-    my_first_vector.insert(my_first_vector.begin(),integer_array,integer_array+3);
+
+    // Animal tom(45,50,"tom");
+    // tom.to_string();
+
+
+    // Animal fred;
+    // fred.setAll(45,50,"billah");
+    // fred.to_string();
+
+
+
+    // int age = 20;
+
+    // int& age_ref = age;
+    // age_ref++;
+    // cout << "before age:" << age << endl;
+
+    // act_age(age_ref);
+
+    // cout << "after age:" << age << endl;
+
+
+    // int* age_ptr;
+
+    // age_ptr=&age;
+
+    // cout << "before age:" << age << endl;
+
+    // make_me_young(age_ptr);
+
+    // cout << "after age:" << age << endl;
+
+
+    // int num_array[5]={1,2,3,4,5};
+    // int* num_ptr = NULL;
+
+    // num_ptr = num_array;
+
+    // cout << "address: "<< num_ptr << "value: "<< *num_ptr << endl;
+
+    // num_ptr++;
+    // cout << "address: "<< num_ptr << "value: "<< *num_ptr << endl;
+
+    // cout << *num_array << endl;
+
+
+    // int number = 7;
+
+    // int* num_ptr;
+
+    // num_ptr=&number;
+
+    // cout << "address: "<< num_ptr << endl;
+
+    // cout<< "value: "<< *num_ptr << endl;
+
+
+    // int number=0;
+    // float result;
+
+    
+    // try
+    // {
+    //     result=22/number;
+    //     cout<<result<<endl;
+        
+    // }
+    // catch(const exception& e)
+    // {
+    //     cerr << e.what() << '\n';
+    // }
+    
+
+
+
+    //  char letter;
+    //  ifstream file_reader("quotes.txt");
+
+    //  if(file_reader){
+    //      while(!file_reader.eof()){
+    //          file_reader.get(letter);
+    //          cout<<letter;
+    //      }
+    //      cout<<endl;
+    //      file_reader.close();
+
+    //  }else{
+    //      cout<<"Error opening file."<<endl;
+    //      return -1;
+    //  }
+
+
+
+    // string quote="Make your time productive by making good habits.";
+
+    // ofstream file_writer("quotes.txt",ios::app);
+
+    // if(file_writer){
+    //     file_writer<< quote<< endl;
+    //     cout << "File has written" << endl;
+    //     file_writer.close();
+    // }else{
+    //     cout<< "Error opening file!"<< endl;
+    //     return -1;
+    // }
+
+    // cout<<add_numbers(4,3)<<endl;
+
+
+
+    // vector <string> str_vector(6);
+
+    // str_vector.push_back("mfaisal");
+    // cout<<str_vector.back()<<endl;
+    // cout<<str_vector.size() << endl;
+
+
+    // vector <int> my_first_vector(10);
+    // int integer_array[5] = {1,2,3,4,5};
+
+    // my_first_vector.insert(my_first_vector.begin(),integer_array,integer_array+3);
+
+    // my_first_vector.insert(my_first_vector.begin()+5,5);
+    
+
+    // cout << my_first_vector.at(5) << endl;
+
+    // my_first_vector.push_back(60);
+    // cout << my_first_vector.at(11) << endl;
+
+    // my_first_vector.pop_back();    
+
+    // cout << my_first_vector.back() << endl;
+
+    // my_first_vector.insert(my_first_vector.begin(),44);
+
+    // cout << my_first_vector.front() << endl;
+
+    // cout << (bool)my_first_vector.empty() << endl;
+
+    // cout << "size: " << my_first_vector.size() << endl;
 
     // cout << my_first_vector << endl;
 
@@ -167,3 +405,8 @@ int main(int argc, char const *argv[])
     
     return 0;
 }
+
+
+// int add_numbers(int left_num, int right_num=2){
+//     return left_num+right_num;
+// }
