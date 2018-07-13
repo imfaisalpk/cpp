@@ -19,100 +19,201 @@ using namespace std;
 //     age = 35;
 // }
 
-class Animal
-{
-    private:
-        int height;
-        int weight;
-        string name;
-    
-    public:
-        void set_height(int cm){height=cm;}
-        void set_weight(int kg){weight=kg;}
-        void set_name(string aka){name=aka;}
-        int get_height(){return height;}
-        int get_weight(){return weight;}
-        string get_name(){return name;}
-    
-    static int animal_count;
+// class Animal
+// {
+//     private:
+//         int height;
+//         int weight;
+//         string name;
+//
+//     public:
+//         void set_height(int cm){height=cm;}
+//         void set_weight(int kg){weight=kg;}
+//         void set_name(string aka){name=aka;}
+//         int get_height(){return height;}
+//         int get_weight(){return weight;}
+//         string get_name(){return name;}
+//
+//     static int animal_count;
+//
+//
+//     Animal();
+//
+//     Animal(int,int,string);
+//
+//     ~Animal();
+//
+//     void setAll(int,int,string);
+//
+//     void to_string();
+//
+//     static int get_animal_count(){return animal_count;}
+//
+// };
+//
+// int Animal::animal_count =0;
+//
+// Animal::Animal(){
+//     animal_count++;
+// }
+// Animal::Animal(int height,int weight,string name){
+//     this -> height = height;
+//     this -> weight = weight;
+//     this -> name = name;
+// }
+//
+// Animal::~Animal(){
+//     cout << "Animal " << this -> name << " destroyed" << endl;
+// }
+//
+// void Animal::setAll(int height,int weight,string name){
+//     this -> height = height;
+//     this -> weight = weight;
+//     this -> name = name;
+// }
+//
+// void Animal::to_string(){
+//     cout << "Height: "<< this ->height << " Weight: "<<this->weight << " name: "<< this -> name << endl;
+// }
+//
+//
+// class Dog:public Animal
+// {
+//     private:
+//         string sound="woof";
+//
+//     public:
+//         void set_sound(string snd){sound=snd;}
+//         string get_sound(){return sound;}
+//
+//     Dog():Animal(){};
+//
+//     Dog(int,int,string,string);
+//
+//     void to_string();
+//
+// };
+//
+//
+// Dog::Dog(int height, int weight,string name,string bark):
+//         Animal(height, weight, name){
+//             this -> sound = bark;
+//         }
+//
+// void Dog::to_string(){
+//     cout << "Height: "<< this ->get_height() << " Weight: "<<this->get_weight()
+//             << " name: "<< this -> get_name() << " sound: " << this ->sound <<  endl;
+//
+// }
 
-    
-    Animal();
-     
-    Animal(int,int,string);
 
-    ~Animal();  
+// class Animal
+// {
+// public:
+//   void get_family(){ cout << "we are Animals" << '\n';}
+//
+//   virtual void get_class(){cout << "I am Animal" << '\n';}
+// };
+//
+// class Dog:public Animal{
+// public:
+//   void get_class(){cout << "I am Dog!!" << '\n';}
+// };
+//
+// class GermanShepard: public Dog{
+// public:
+//   void get_class(){cout << "I am GermanShepard." << '\n';}
+//   void get_derived(){cout << "I am Animal and Dog." << '\n';}
+// };
+//
+// void what_class_are_you(Animal *animal ) {
+//   animal -> get_class();
+// }
 
-    void setAll(int,int,string);
+class Animal{
+	public:
+		virtual void makeSound(){ cout << "The Animal says grrrr" << endl; }
 
-    void to_string();
-
-    static int get_animal_count(){return animal_count;}
+		// The Animal class could be a capability class that exists
+		// only to be derived from by containing only virtual methods
+		// that do nothing
 
 };
 
-int Animal::animal_count =0;
+class Cat : public Animal{
+	public:
+		void makeSound(){ cout << "The Cat says meow" << endl; }
 
-Animal::Animal(){
-    animal_count++;
-}
-Animal::Animal(int height,int weight,string name){
-    this -> height = height;
-    this -> weight = weight;
-    this -> name = name;
-}
+};
 
-Animal::~Animal(){
-    cout << "Animal " << this -> name << " destroyed" << endl;
-}
-
-void Animal::setAll(int height,int weight,string name){
-    this -> height = height;
-    this -> weight = weight;
-    this -> name = name;
-}
-
-void Animal::to_string(){
-    cout << "Height: "<< this ->height << " Weight: "<<this->weight << " name: "<< this -> name << endl;
-}
-
-
-class Dog:public Animal
-{
-    private:
-        string sound="woof";
-    
-    public:
-        void set_sound(string snd){sound=snd;}
-        string get_sound(){return sound;}
-
-    Dog():Animal(){};
-
-    Dog(int,int,string,string);
-
-    void to_string();
+class Dog : public Animal{
+	public:
+		void makeSound(){ cout << "The Dog says woof" << endl; }
 
 };
 
 
-Dog::Dog(int height, int weight,string name,string bark):
-        Animal(height, weight, name){
-            this -> sound = bark;
-        }
 
-void Dog::to_string(){
-    cout << "Height: "<< this ->get_height() << " Weight: "<<this->get_weight() 
-            << " name: "<< this -> get_name() << " sound: " << this ->sound <<  endl;
+class Car{
+	public:
+		virtual int getNumWheels() = 0;
+		virtual int getNumDoors() = 0;
+};
 
-}
+class StationWagon : public Car{
+	public:
+		int getNumWheels() { cout << "Station Wagon has 4 Wheels" << endl; }
+		int getNumDoors() { cout << "Station Wagon has 4 Doors" << endl; }
+		StationWagon() { }
+		~StationWagon();
+
+};
 
 
 int main(int argc, char const *argv[])
 {
-    Dog spot(45,50,"billah","goofy");
-    spot.to_string();
 
-    spot.Animal::to_string();
+  // Animal* pCat = new Cat;
+	// Animal* pDog = new Dog;
+  //
+  // pCat->makeSound();
+  // pDog->makeSound();
+
+
+  Car* station = new StationWagon();
+  station->getNumWheels();
+
+
+
+  // Dog spot;
+  // GermanShepard tom;
+  //
+  // Animal* ptr_dog = &spot;
+  // Animal* ptr_gsh = &tom;
+  //
+  // ptr_dog-> get_family();
+  // ptr_dog->get_class();
+  //
+  // ptr_gsh->get_family();
+  // ptr_gsh->get_class();
+
+
+
+  // Animal *animal = new Animal;
+  // Dog *dog=new Dog;
+  //
+  // animal -> get_class();
+  // dog -> get_class();
+  //
+  // what_class_are_you(animal);
+  // what_class_are_you(dog);
+
+
+
+    // Dog spot(45,50,"billah","goofy");
+    // spot.to_string();
+    //
+    // spot.Animal::to_string();
 
 
 
@@ -175,18 +276,18 @@ int main(int argc, char const *argv[])
     // int number=0;
     // float result;
 
-    
+
     // try
     // {
     //     result=22/number;
     //     cout<<result<<endl;
-        
+
     // }
     // catch(const exception& e)
     // {
     //     cerr << e.what() << '\n';
     // }
-    
+
 
 
 
@@ -238,14 +339,14 @@ int main(int argc, char const *argv[])
     // my_first_vector.insert(my_first_vector.begin(),integer_array,integer_array+3);
 
     // my_first_vector.insert(my_first_vector.begin()+5,5);
-    
+
 
     // cout << my_first_vector.at(5) << endl;
 
     // my_first_vector.push_back(60);
     // cout << my_first_vector.at(11) << endl;
 
-    // my_first_vector.pop_back();    
+    // my_first_vector.pop_back();
 
     // cout << my_first_vector.back() << endl;
 
@@ -304,8 +405,8 @@ int main(int argc, char const *argv[])
     //     num_to_be_guessed = stoi(user_input);
     //     cout << num_to_be_guessed << endl;
 
-    // }while(num_to_be_guessed!=4);    
-    
+    // }while(num_to_be_guessed!=4);
+
     // int rand_num = (rand()%100)+1;
     // while(rand_num != 100){
     //     cout << "randome number: "<<rand_num << endl;
@@ -369,7 +470,7 @@ int main(int argc, char const *argv[])
 
 
     // unsigned number = 5;
-    // cout << sizeof(number) << endl; 
+    // cout << sizeof(number) << endl;
     // cout << "(2+1-3)*2/2 :"<< (2+1-3)*2/2 << endl;
     // cout << (float)4/5 << endl;
 
@@ -394,15 +495,15 @@ int main(int argc, char const *argv[])
 
 
     // one line comment
-    /*two line 
+    /*two line
     comments*/
-    
+
     // cout << "Hello Pakistan!\n";
     // cout << "Hello again from the other side of the world!!\n";
 
 
 
-    
+
     return 0;
 }
 
